@@ -30,4 +30,22 @@ api.post('/', (req, res) => {
     }
 });
 
+// get route for retreiving a specific note in the api
+api.get('/:note_id', (req, res) => {
+    if (req.params.note_id) {
+        console.info(`${req.method} request received to get a single a note`);
+        const noteId = req.params.note_id;
+        for (let i = 0; i < notes.length; i++) {
+            const currentNote = notes[i];
+            if (currentNote.note_id === noteId) {
+                res.json(currentNote);
+                return;
+            }
+        }
+        res.status(404).send('Note not found');
+    } else {
+        res.status(400).send('Note ID not provided');
+    }
+})
+
 module.exports = api;
