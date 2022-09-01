@@ -2,8 +2,6 @@ const express = require('express');
 const path = require('path');
 const api = require('./routes/index.js');
 
-const db = require('./db/db');
-
 // defines the port
 const PORT = process.env.PORT || 3001;
 
