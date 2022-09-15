@@ -7,5 +7,15 @@
         "title": "Single note",
         "text": "I love keeping notes, but I sometimes struggle to know what to save.",
         "id": "0978"
+    },
+    {
+        "title": "Another Note",
+        "text": "Just typing to save it.",
+        "id": "b182"
+    },
+    {
+        "title": "Sleep",
+        "text": "Go to sleep early",
+        "id": "8218"
     }
 ]
