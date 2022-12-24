@@ -2,7 +2,19 @@
 ### GitHub: [ treavorwills ]( https://github.com/treavorwills )
 ## Description
 Web application to write and save notes using an Express.js backend and data stored in a JSON file
-## Link
+
+## How it's made
+### Languages:
+- JavaScript ES6+
+- CSS3
+- HTML5
+
+### Tools: 
+- Express
+- Node 
+- Bootstrap
+
+## Check it out!
 [ https://fathomless-shelf-01568.herokuapp.com/ ]( https://fathomless-shelf-01568.herokuapp.com/ )
 
 ## Usage
