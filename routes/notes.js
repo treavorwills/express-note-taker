@@ -1,7 +1,7 @@
 const api = require('express').Router();
 // const notes = require('../db/db.json');
 const uuid = require('../helpers/uuid');
-const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
+const { readFromFile, readAndAppend, writeToFile } = require('../helpers/fsUtils');
 const fs = require('fs');
 
 
@@ -56,5 +56,37 @@ api.get('/:note_id', (req, res) => {
         res.status(400).send('Note ID not provided');
     }
 })
+
+// delete route
+api.delete('/:note_id', (req, res) => {
+    if (req.params.note_id) {
+        console.info(`${req.method} request received to delete a single a note`);
+        const noteId = req.params.note_id;
+        fs.readFile('./db/db.json', 'utf8', (err, data) => {
+            if (err) {
+                console.error(err);
+            } else {
+                let notes = JSON.parse(data);
+                for (let i = 0; i < notes.length; i++) {
+                    const currentNote = notes[i];
+                    if (currentNote.id === noteId) {
+                        res.json(currentNote);
+                        // splice to remove the note we want to delete
+                        notes.splice(i,1);
+                        // write notes to the db
+                        writeToFile( './db/db.json',notes)
+                        console.info(`Note id ${noteId} has been deleted`)
+                        return;
+                    }
+                };
+                res.status(404).send('Note not found');
+                console.log('Note not found');
+            };
+        });
+    } else {
+        res.status(400).send('Note ID not provided');
+    }
+})
+
 
 module.exports = api;
